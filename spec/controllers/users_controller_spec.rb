@@ -4,21 +4,21 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET #create" do
     it "returns http success" do
-      get :create
+      post :create
       expect(response).to be_successful
     end
   end
 
   describe "GET #update" do
     it "returns http success" do
-      get :update
+      patch :update
       expect(response).to be_successful
     end
   end
 
   describe "GET #destroy" do
     it "returns http success" do
-      get :destroy
+      delete :destroy
       expect(response).to be_successful
     end
   end
