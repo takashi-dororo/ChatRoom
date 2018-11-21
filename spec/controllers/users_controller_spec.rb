@@ -5,7 +5,7 @@ RSpec.describe UsersController, type: :controller do
   describe "GET #create" do
     it "returns http success" do
       post :create
-      expect(response).to be_successful
+      expect(response).to redirect_to(rooms_path)
     end
   end
 
@@ -23,4 +23,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  # decribe 'login user' do
+  #   context 'when click login butoon click' do
+  #     it 'login guest user' do
+  #       expect{ user.create }.to
+  #     end
+  #   end
+  # end
 end
