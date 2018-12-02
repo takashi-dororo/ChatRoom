@@ -1,0 +1,27 @@
+<div class="select_chat_page">
+  <div class="create_container">
+    <%= form_for current_user, url: user_path(current_user), html: { method: :patch } do |f| %>
+      <p>Name: <%= f.text_field :name, :placeholder => current_user.name, class: "text_field" %>
+        <input type="submit" value="更新" class="btn btn-outline-secondary click">
+      </p>
+    <% end %>
+    <div class="create_chatroom">
+      <%= link_to 'ChatRoomの作成', new_room_path, method: :get, class: "btn btn-outline-secondary room" %>
+    </div>
+  </div>
+  <div class="active_chatrooms">
+    <h2>アクティブなChatRoom</h2>
+    <!-- 検索バー -->
+    <div class="active_chatroom">
+      <% if @rooms.present? %>
+        <div class="room_list">
+          <% @rooms.each do |room| %>
+            <%= link_to "#{room.name}", room_path(room), class:"btn btn-outline-secondary" %>
+          <% end %>
+        </div>
+      <% else %>
+        <p>「ChatRoomはございません」</p>
+      <% end %>
+    </div>
+  </div>
+</div>

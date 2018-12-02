@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 gem 'rails', '~> 5.2.1'
+gem 'actioncable', '~> 5.2', '>= 5.2.1.1'
+gem 'annotate'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'

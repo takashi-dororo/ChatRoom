@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 2018_11_19_111353) do
   end
 
   create_table "room_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "room_id"
-    t.integer "tag_id"
+    t.bigint "room_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_tags_on_room_id"
+    t.index ["tag_id"], name: "index_room_tags_on_tag_id"
   end
 
   create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
