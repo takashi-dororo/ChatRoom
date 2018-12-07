@@ -7,15 +7,24 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    # エラー
+    @tag = @room.tags
   end
 
   def new
     @room = Room.new
+      @room.tags.build
   end
 
   def create
-    Room.create(room_params)
-    redirect_to(rooms_path)
+    @room = Room.new(room_params)
+    if @room.save
+      room_tag = Tag.create(name: params[:room][:tags][:name])
+      @room.tags << room_tag
+      redirect_to(rooms_path)
+    else
+      render 'new'
+    end
   end
 
   def destroy

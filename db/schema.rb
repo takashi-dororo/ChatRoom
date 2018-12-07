@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_111353) do
+ActiveRecord::Schema.define(version: 2018_12_04_102855) do
 
   create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -47,4 +47,6 @@ ActiveRecord::Schema.define(version: 2018_11_19_111353) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "room_tags", "rooms"
+  add_foreign_key "room_tags", "tags"
 end

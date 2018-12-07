@@ -6,10 +6,15 @@
     <h2>ChatRoomの作成</h2>
     <div class="new_room_text">
       <%= form_for @room, url: rooms_path, html: { method: :post } do |f| %>
+        <%= render 'shared/error_messages' %>
+
         <%= f.text_field :name, class: "text", placeholder: 'ChatRoom名：' %>
+        <%= f.fields_for :tags do |t| %>
+          <%= t.text_field :name, class: "text", placeholder: 'ChatRoomタグ：' %>
+        <% end %>
 
         <div class="create_btn">
-          <input type="submit" value="作成" class="btn btn-outline-secondary">
+          <%= f.submit '作成', class: "btn btn-outline-secondary" %>
         </div>
       <% end %>
     </div>

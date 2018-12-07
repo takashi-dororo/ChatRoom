@@ -9,7 +9,8 @@
 #
 
 class Room < ApplicationRecord
-  has_many :room_tags
+  has_many :room_tags, foreign_key: 'room_id'
   has_many :tags, through: :room_tags
-  # validates 
+  accepts_nested_attributes_for :room_tags
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
 end
