@@ -12,18 +12,24 @@
   <div class="active_chatrooms">
     <h2>アクティブなChatRoom</h2>
     <!-- 検索バー -->
-    <div class="active_chatroom">
-      <% if @rooms.present? %>
+      <div class="search">
+        <%= form_tag rooms_path, method: :get do %>
+          <%= text_field_tag :search, params[:search], class: "text_field", :placeholder => "タグ名を入力してくだい" %>
+          <%= submit_tag "検索", :name => nil, class: "btn btn-outline-secondary click" %>
+        <% end %>
+      </div>
+    <% if @rooms.present? %>
+      <div class="active_chatroom">
         <div class="room_list">
           <% @rooms.each do |room| %>
-            <%= link_to "#{room.name}", room_path(room), class:"btn btn-outline-secondary" %>
+            <%= link_to "#{room.name} #{room.tags.name}", room_path(room), class:"btn btn-outline-secondary" %>
           <% end %>
         </div>
-      <% else %>
+      </div>
+    <% else %>
         <div class="non_room_list">
           <p>「ChatRoomはございません」</p>
         </div>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>

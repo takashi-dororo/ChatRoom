@@ -1,8 +1,9 @@
 class RoomsController < ApplicationController
 
   def index
-    @rooms = Room.all
+    # @rooms = Room.all
     @current_user
+    @rooms = Room.search(params[:search])
   end
 
   def show
@@ -25,10 +26,6 @@ class RoomsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def destroy
-
   end
 
   private

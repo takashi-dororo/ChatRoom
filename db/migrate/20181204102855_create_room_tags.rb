@@ -4,7 +4,7 @@ class CreateRoomTags < ActiveRecord::Migration[5.2]
       t.references :room, foreign_key: true
       t.references :tag, foreign_key: true
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
