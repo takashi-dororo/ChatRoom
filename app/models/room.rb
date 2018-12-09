@@ -13,4 +13,12 @@ class Room < ApplicationRecord
   has_many :tags, through: :room_tags
   accepts_nested_attributes_for :room_tags
   validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+
+  def self.search(search)
+    if search
+      Room.joins(:tags).where(['tags.name LIKE ?', "%#{search}%"]).uniq
+    else
+      Room.all
+    end
+  end
 end
