@@ -8,8 +8,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    # エラー
-    @tag = @room.tags
+    @chats = Chat.all
   end
 
   def new

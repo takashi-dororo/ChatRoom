@@ -1,2 +1,20 @@
-<%= @room.name %>
-<%= @tag.name %>
+<div class="chatroom">
+  <div class="chat_header">
+    <div class="return_btn">
+      <%= link_to '<-', rooms_path, class: "btn btn-outline-secondary" %>
+    </div>
+    <div class="chatroom_name">
+      <h1><%= @room.name %></h1>
+    </div>
+  </div>
+  <div class="chat_container">
+    <div id="chats" class="chat_contents">
+      <%= render @chats %>
+    </div>
+    <div class="contribute">
+      <form>
+        <input type="text" data-behavior="room_speaker" placeholder="入力したら,enterで投稿">
+      </form>
+    </div>
+  </div>
+</div>

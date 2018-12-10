@@ -12,13 +12,13 @@
   <div class="active_chatrooms">
     <h2>アクティブなChatRoom</h2>
     <!-- 検索バー -->
+    <% if @rooms.present? %>
       <div class="search">
         <%= form_tag rooms_path, method: :get do %>
           <%= text_field_tag :search, params[:search], class: "text_field", :placeholder => "タグ名を入力してくだい" %>
           <%= submit_tag "検索", :name => nil, class: "btn btn-outline-secondary click" %>
         <% end %>
       </div>
-    <% if @rooms.present? %>
       <div class="active_chatroom">
         <div class="room_list">
           <% @rooms.each do |room| %>

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :update, :destroy]
   resources :rooms
 
+  # Serve websocket cable requests in-process
+  # mount ActionCable.server => '/cable'
 end
