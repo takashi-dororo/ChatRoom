@@ -16,7 +16,7 @@ class Room < ApplicationRecord
 
   def self.search(search)
     if search
-      Room.joins(:tags).where(['tags.name LIKE ?', "%#{search}%"]).uniq
+      Room.joins(:tags).where(['tags.name LIKE ?', "%#{search}%"])
     else
       Room.all
     end

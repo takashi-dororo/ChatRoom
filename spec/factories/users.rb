@@ -10,7 +10,6 @@
 
 FactoryBot.define do
   factory :user do
-    id { 1 }
-    name { "ゲスト1" }
+    sequence(:name) { |n| "ゲスト#{n}" }
   end
 end

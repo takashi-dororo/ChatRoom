@@ -10,6 +10,6 @@
 
 FactoryBot.define do
   factory :room do
-    name { "MyString" }
+    name { "Test room" }
   end
 end

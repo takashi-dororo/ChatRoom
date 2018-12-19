@@ -1,7 +1,10 @@
 <div class="select_chat_page">
   <div class="create_container">
+    <% if flash[:danger] %>
+      <p><%= flash[:danger] %></p>
+    <% end %>
     <%= form_for current_user, url: user_path(current_user), html: { method: :patch } do |f| %>
-      <p>Name: <%= f.text_field :name, :placeholder => current_user.name, class: "text_field" %>
+      <p>Name: <%= f.text_field :name, value: current_user.name, class: "text_field" %>
         <input type="submit" value="更新" class="btn btn-outline-secondary click">
       </p>
     <% end %>
@@ -22,7 +25,14 @@
       <div class="active_chatroom">
         <div class="room_list">
           <% @rooms.each do |room| %>
-            <%= link_to "#{room.name} #{room.tags.name}", room_path(room), class:"btn btn-outline-secondary" %>
+            <%= link_to room_path(room), class:"btn btn-outline-secondary" do %>
+              <span><%= room.name %></span>
+              <span>
+                <% room.tags.each do |tag| %>
+                  <%= "##{tag.name}" %>
+                <% end %>
+              </span>
+            <% end %>
           <% end %>
         </div>
       </div>

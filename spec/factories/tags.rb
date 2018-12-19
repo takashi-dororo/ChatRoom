@@ -10,6 +10,7 @@
 
 FactoryBot.define do
   factory :tag do
-    name { "MyString" }
+    name { "Test tag" }
+    association :room
   end
 end
